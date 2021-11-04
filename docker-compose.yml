@@ -45,7 +45,7 @@ services:
     container_name: mvc
     hostname: mvc
     volumes:
-      - home/alumno/dwes:/var/www/html
+      - /home/alumno/dwes:/var/www/html
     depends_on:
       - db
     environment:
