@@ -1,0 +1,3 @@
+<?php
+
+  echo "CONTENIDO PRIVADO.FUERA DE PUBLIC";
