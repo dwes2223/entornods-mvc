@@ -1,3 +1,3 @@
 <?php
-  echo "Contenido publico <br>";
-  require "../start.php";
+   //echo "Contenido publico <br>";
+    require "../start.php";
