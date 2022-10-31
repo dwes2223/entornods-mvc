@@ -1,3 +1,3 @@
 <?php
-
-  echo "CONTENIDO PRIVADO.FUERA DE PUBLIC";
+  require "../core/App.php";
+  $app = new App();
