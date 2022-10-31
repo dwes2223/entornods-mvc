@@ -22,19 +22,12 @@
     <div class="container">
         <div class="row">
             <div class="col-12 py-4">
-                <h1>Page scroll content</h1>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Praesent tincidunt dolor eget lorem blandit, auctor
-                porttitor enim faucibus. Mauris sed elit sollicitudin,
-                aliquam lorem nec, suscipit ex. Sed mollis rhoncus
-                scelerisque. Morbi varius a est sed luctus. Morbi sapien
-                velit, venenatis a sapien vitae, commodo rutrum erat.
-                Nam volutpat diam ac convallis egestas. Nunc convallis
-                tempor hendrerit. Aenean turpis quam, viverra eu eros
-                quis, ornare tristique velit.
+                <h1>Menu Principal</h1>
+                Esta es el menu principal de la aplicacion.
             </div>
         </div>
     </div>
+    <?php require "../app/views/footer.php" ?>
 </body>
 </html>
    

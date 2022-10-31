@@ -3,7 +3,7 @@
     
     public function __construct()
     {
-          echo "<br>En HOME Controller";
+          //echo "<br>En HOME Controller";
     }
 
     public function index(){

@@ -1,7 +1,7 @@
 <header>
 <nav
         class="navbar navbar-expand-lg navbar navbar-expand-sm sticky-top navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Site logo</a>
+        <a class="navbar-brand" href="#">MiSitio</a>
         <button class="navbar-toggler" type="button"
             data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false"
