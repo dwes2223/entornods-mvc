@@ -7,7 +7,8 @@
     }
 
     public function index(){
-        echo "<br> En INDEX de HOMECONTROLLER";
+        //echo "<br> En INDEX de HOMECONTROLLER";
+        require "../app/views/home.php";
     }
 
     public function show(){
