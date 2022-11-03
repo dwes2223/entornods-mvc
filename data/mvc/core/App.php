@@ -1,4 +1,7 @@
 <?php
+
+  namespace Core;
+  
   class App{
 
     function __construct()
