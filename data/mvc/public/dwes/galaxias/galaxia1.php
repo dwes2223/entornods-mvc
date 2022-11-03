@@ -9,7 +9,7 @@
 
     class Galaxia{
         function nacimiento(){
-            echo "<br>Soy un nueva Galaxia!";
+            echo "<br>Soy un nueva Galaxia!(Pegaso)";
         }
         
         function __construct()
@@ -18,6 +18,6 @@
         }
 
         static function muerte($nombre){
-            echo "Galaxia " . $nombre . " destruyendose....";
+            echo "<br>Galaxia " . $nombre . " destruyendose....";
         }
     }
