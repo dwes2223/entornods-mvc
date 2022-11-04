@@ -1,19 +1,19 @@
 <?php
-  namespace App\Controllers;
-  
-  class LoginController{
-    
-    public function __construct()
+namespace App\Controllers;
+
+/**
+*
+*/
+class LoginController
+{
+
+    function __construct()
     {
-          echo "<br>En LOGIN Controller";
+        // echo "En LoginController";
     }
 
-    public function index(){
-        echo "<br> En INDEX de LOGIN CONTROLLER";
+    public function index()
+    {
+        require "app/views/login.php";
     }
-
-    public function show(){
-        echo "<br> En SHOW de LOGIN CONTROLLER";
-    }
-
-  }//finclase
+}

@@ -1,26 +1,35 @@
 <?php
+namespace Core;
 
-   namespace Core;
-   require_once "../config/db.php";
+require_once 'config/db.php';
+use const Config\DSN;
+use const Config\USER;
+use const Config\PASSWORD;
 
-    use const Config\DSN;
-    use const Config\USER;
-    use const Config\PASSWORD;
+//necesario para referirnos a ella
+use PDO;
+use PDOException;
 
-   use PDO  ; //Si no lo pongon busca por defecto Core\PDO
-   use PDOException;
-    
- class Model{
-  protected static function db(){
-     try {
-        $db = new PDO(DSN,USER,PASSWORD);
-        $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+/*
+* Vamos a definir la conexión a la BD dentro de una superclase modelo
+*       y el resto de las clases que acceden a BD heredan de ella
+*/
+class Model
+{
 
-     } catch (PDOException $e) {
-        echo "Fallo la conexion : " . $e->getMessage();
-     }
+    function __construct()
+    {
+        # code...
+    }
 
-     return $db;
-  }//fin_funcion
-
- }
+    protected static function db()
+    {
+        try {
+            $db = new PDO(DSN, USER, PASSWORD);
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo 'Falló la conexión: ' . $e->getMessage();
+        }
+        return $db;
+    }
+}

@@ -1,19 +1,18 @@
 <?php
-  namespace App\Controllers;
-  
-  class ProductController{
-    
-    public function __construct()
+namespace App\Controllers;
+/**
+*
+*/
+class ProductController
+{
+
+    function __construct()
     {
-          echo "<br>En Product Controller";
+        // echo "En UserController";
     }
 
-    public function index(){
-        echo "<br> En INDEX de PRODUCTCONTROLLER";
+    public function index()
+    {
+        require "app/views/product.php";
     }
-
-    public function show(){
-        echo "<br> En SHOW de PRODUCTCONTROLLER";
-    }
-
-  }//finclase
+}
