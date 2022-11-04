@@ -2,7 +2,7 @@
 namespace App\Controllers;
 
 require_once "app/models/Product.php";
-use App\Models\User;
+use App\Models\Product;
 /**
 *
 */
@@ -11,13 +11,13 @@ class ProductController
 
     function __construct()
     {
-        // echo "En UserController";
+        // echo "En ProductController";
     }
 
     public function index()
     {
         //buscar datos
-        $users = User::all();
+        $products = Product::all();
         //pasar a la vista
         require('app/views/product/index.php');
     }
@@ -26,7 +26,7 @@ class ProductController
     {
         // $id = (int) $args[0];
         list($id) = $args;
-        $user = User::find($id);        
+        $product = Product::find($id);        
         require('app/views/product/show.php');        
     }
 }

@@ -13,7 +13,7 @@ class Product extends Model
 {
     public function __construct()
     {
-        $this->birthdate = DateTime::createFromFormat('Y-m-d', $this->birthdate);
+        $this->fecha_compra = DateTime::createFromFormat('Y-m-d', $this->fecha_compra);
     }
 
     /*

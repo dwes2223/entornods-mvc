@@ -11,25 +11,25 @@
 
   <main role="main" class="container">
     <div class="starter-template">
-      <h1>Lista de usuarios</h1>
+      <h1>Lista de Productos</h1>
 
       <table class="table table-striped table-hover">
         <tr>
+          <th>Numero Producto</th>
           <th>Nombre</th>
-          <th>Apellidos</th>
-          <th>Email</th>
-          <th>F. nacimiento</th>
+          <th>Precio</th>
+          <th>Fecha de Compra</th>
           <th></th>
         </tr>
 
-        <?php foreach ($users as $key => $user) { ?>
+        <?php foreach ($products as $key => $product) { ?>
           <tr>
-          <td><?php echo $user->name ?></td>
-          <td><?php echo $user->surname ?></td>
-          <td><?php echo $user->email ?></td>
-          <td><?php echo $user->birthdate ? $user->birthdate->format('d-m-Y') : 'nonato' ?></td>
+          <td><?php echo $product->id ?></td>
+          <td><?php echo $product->name ?></td>
+          <td><?php echo $product->precio ?></td>
+          <td><?php echo $product->fecha_compra ? $product->fecha_compra->format('d-m-Y') : 'no comprado' ?></td>
           <td>
-            <a href="<?= PATH."/user/show/".$user->id ?>" class="btn btn-primary">Ver </a>
+            <a href="<?= PATH."/product/show/".$product->id ?>" class="btn btn-primary">Ver </a>
           </td>
           </tr>
         <?php } ?>
