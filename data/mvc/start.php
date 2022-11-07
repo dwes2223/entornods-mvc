@@ -1,3 +1,6 @@
 <?php
-  require "../core/App.php";
-  $app = new App();
+require "config/env.php";
+require "core/App.php";
+
+// echo "Inicio<br>";
+$app = new \Core\App();
