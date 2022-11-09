@@ -5,7 +5,7 @@ use PDO;
 use DateTime;
 use Core\Model;
 
-require_once 'core/Model.php';
+//require_once 'core/Model.php';
 
 
 class Product extends Model

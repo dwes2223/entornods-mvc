@@ -1,0 +1,21 @@
+{
+    "name": "alumno/mvc",
+    "description": "patron mvc",
+    "license": "opensource",
+    "autoload": {
+        "psr-4": {
+            "Core\\": "core/",
+            "App\\Controllers\\": "app/controllers/",
+            "App\\Models\\": "app/models"
+        }
+    },
+    "authors": [
+        {
+            "name": "egonzalez",
+            "email": "egonzaleziessh@gmail.com"
+        }
+    ],
+    "require": {
+        "dompdf/dompdf": "^2.0"
+    }
+}

@@ -1,8 +1,9 @@
 <?php
 namespace App\Controllers;
 
-require_once "app/models/Product.php";
+
 use App\Models\Product;
+use Dompdf\Dompdf;
 
 /*
 * La inserción requiere dos métodos en el controlador:
@@ -29,7 +30,7 @@ class ProductController
     public function index()
     {
         //buscar datos
-        $Products = Product::all();
+        $products = Product::all();
         //pasar a la vista
         require('app/views/product/index.php');
     }
@@ -83,4 +84,37 @@ class ProductController
         $product->delete();
         header('Location: /product');
     }    
+
+    public function pdf()
+    {
+        //iniciar buffer, para construir un response
+        ob_start();
+        $users = Product::all();
+        require_once ('app/views/product/pdf.php');
+        // Volcamos el contenido del buffer
+        // el response ya no va al navegador, va a $html
+        $html = ob_get_clean();
+        
+        $dompdf = new Dompdf();
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->loadHtml($html);
+        $dompdf->render();
+        $dompdf->stream("productos.pdf", array("Attachment"=>0));
+    }
+    public function pdfsimple()
+    {
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml('hello world');
+        
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'portrait');
+        
+        // Render the HTML as PDF
+        $dompdf->render();
+        
+        // Output the generated PDF to Browser
+        $dompdf->stream();        
+    }
+}
 }
