@@ -1,0 +1,90 @@
+<?php
+namespace App\Models;
+
+use PDO;
+use DateTime;
+use Core\Model;
+
+require_once 'core/Model.php';
+
+class Product extends Model
+{
+    public function __construct()
+    {
+        $this->fecha_compra = DateTime::createFromFormat('Y-m-d', $this->fecha_compra);
+    }
+    public static function all(){ 
+        //obtener conexión
+        $db = Product::db();
+        //preparar consulta
+        $sql = "SELECT * FROM products";
+        //ejecutar
+        $statement = $db->query($sql);
+        //recoger datos con fetch_all
+        $products = $statement->fetchAll(PDO::FETCH_CLASS, Product::class);
+        //retornar
+        return $products;
+    }
+    public static function find($id) 
+    {
+        $db = Product::db();
+        $stmt = $db->prepare('SELECT * FROM products WHERE id=:id');
+        $stmt->execute(array(':id' => $id));
+        $stmt->setFetchMode(PDO::FETCH_CLASS, Product::class);
+        $user = $stmt->fetch(PDO::FETCH_CLASS);
+        // echo $this->fecha_compra->format('d-m-y');
+        return $user;
+    } 
+    public static function findbyEmail($email){
+
+        $db = Product::db();
+        $stmt = $db->prepare('SELECT * FROM products WHERE email=:email');
+        $stmt->execute(array(':email' => $email));
+        $stmt->setFetchMode(PDO::FETCH_CLASS, Product::class);
+        $user = $stmt->fetch(PDO::FETCH_CLASS);
+        return $user;
+    }
+    public function setPassword($password)
+    {
+        $password = password_hash($password, PASSWORD_BCRYPT);
+        $db = Product::db();
+        $stmt = $db->prepare('UPDATE products SET password = :password WHERE id = :id');
+        $stmt->bindValue(':id', $this->id);
+        $stmt->bindValue(':password', $password);
+        $stmt->execute();
+        return $password;
+    }
+    public function passwordVerify($password, $user)
+    {
+        return password_verify($password, $user->password);
+    } 
+    public function insert()
+    {
+        $db = Product::db();
+        $stmt = $db->prepare('INSERT INTO products(name, surname, fecha_compra, email) VALUES(:name, :surname, :fecha_compra, :email)');
+        $stmt->bindValue(':name', $this->name);
+        $stmt->bindValue(':surname', $this->surname);
+        $stmt->bindValue(':email', $this->email);
+        $stmt->bindValue(':fecha_compra', $this->fecha_compra);
+        return $stmt->execute();
+    }
+
+    public function save()
+    {
+        $db = Product::db();
+        $stmt = $db->prepare('UPDATE products SET name = :name, surname = :surname, fecha_compra = :fecha_compra, email = :email WHERE id = :id');
+        $stmt->bindValue(':id', $this->id);
+        $stmt->bindValue(':name', $this->name);
+        $stmt->bindValue(':surname', $this->surname);
+        $stmt->bindValue(':fecha_compra', $this->fecha_compra);
+        $stmt->bindValue(':email', $this->email);
+        return $stmt->execute();
+    }
+    
+    public function delete(){ 
+        $db = Product::db();
+        $stmt = $db->prepare('DELETE FROM products WHERE id = :id');
+        $stmt->bindValue(':id', $this->id);
+        return $stmt->execute();
+    }
+}
